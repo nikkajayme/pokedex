@@ -1,10 +1,31 @@
 import * as React from "react";
-import NavBar from "../components/navBar";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "gatsby";
+import NavBar from "../components/navBar";
 
 
 const Pokemon = ({ location }) => {
     const { state } = location;
+    
+    const [ sprite, setSprite ] = useState('');
+    const [ stats, setStats ] = useState([]);
+    const [ abilities, setAbilities ] = useState([]);
+    const [ types, setTypes ] = useState([]);
+
+    useEffect(() => {
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${state.name}`)
+          .then(response => {
+            console.log(response.data)
+            setSprite(response.data.sprites['front_default'])
+            setStats(response.data)
+            setAbilities(response.data.abilities)
+            setTypes(response.data.types)
+          }
+          )
+          .catch(error => console.log(error))
+      }, []);
+
     return (
         <section
             className="w-[375px] h-screen bg-blue-slate mx-auto
@@ -22,11 +43,11 @@ const Pokemon = ({ location }) => {
                         rounded-xl bg-card drop-shadow-md list-none flex
                         flex-col items-center justify-between py-4"
                 >
-                    <img src={state.sprite} alt={state.name}/>
+                    <img src={sprite} alt={stats.name}/>
                     <div>
-                        <p>name: <span className="text-teal">{state.name}</span></p>
+                        <p>name: <span className="text-teal">{stats.name}</span></p>
                         <p>abilities: 
-                            {state.abilities.map((ability, index) =>
+                            {abilities.map((ability, index) =>
                                 <span
                                     className="text-teal"
                                     key={index}
@@ -36,7 +57,7 @@ const Pokemon = ({ location }) => {
                             )}
                         </p>
                         <p>types: 
-                            {state.types.map((type, index) =>
+                            {types.map((type, index) =>
                                 <span
                                     className="text-teal"
                                     key={index}
@@ -45,8 +66,8 @@ const Pokemon = ({ location }) => {
                                 </span>
                             )}
                         </p>
-                        <p>weight: <span className="text-teal">{state.weight}</span></p>
-                        <p>height: <span className="text-teal">{state.height}</span></p>
+                        <p>weight: <span className="text-teal">{stats.weight}</span></p>
+                        <p>height: <span className="text-teal">{stats.height}</span></p>
                     </div>
                 </div>
             </div>

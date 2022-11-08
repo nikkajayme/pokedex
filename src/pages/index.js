@@ -96,11 +96,10 @@ const Item = ({ url }) => {
         to="/pokemon/"
         state={{
           name: pokemon.name,
-          abilities: pokemon.abilities,
-          weight: pokemon.weight,
-          height: pokemon.height,
-          types: pokemon.types,
-          sprite: sprites
+          // abilities: pokemon.abilities,
+          // weight: pokemon.weight,
+          // height: pokemon.height,
+          // types: pokemon.types,
         }}
       >
         <div className="w-[266px] h-[235px] flex flex-col justify-between">
