@@ -4,14 +4,7 @@ import { Link } from "gatsby";
 
 
 const Pokemon = ({ location }) => {
-    const {
-        name,
-        abilities,
-        weight,
-        height,
-        types,
-        img
-    } = location.state
+    const { state } = location;
     return (
         <section
             className="w-[375px] h-screen bg-blue-slate mx-auto
@@ -29,11 +22,11 @@ const Pokemon = ({ location }) => {
                         rounded-xl bg-card drop-shadow-md list-none flex
                         flex-col items-center justify-between py-4"
                 >
-                    <img src={img} alt={name}/>
+                    <img src={state.img} alt={state.name}/>
                     <div>
-                        <p>name: <span className="text-teal">{name}</span></p>
+                        <p>name: <span className="text-teal">{state.name}</span></p>
                         <p>abilities: 
-                            {abilities.map((ability, index) =>
+                            {state.abilities.map((ability, index) =>
                                 <span
                                     className="text-teal"
                                     key={index}
@@ -43,7 +36,7 @@ const Pokemon = ({ location }) => {
                             )}
                         </p>
                         <p>types: 
-                            {types.map((type, index) =>
+                            {state.types.map((type, index) =>
                                 <span
                                     className="text-teal"
                                     key={index}
@@ -52,8 +45,8 @@ const Pokemon = ({ location }) => {
                                 </span>
                             )}
                         </p>
-                        <p>weight: <span className="text-teal">{weight}</span></p>
-                        <p>height: <span className="text-teal">{height}</span></p>
+                        <p>weight: <span className="text-teal">{state.weight}</span></p>
+                        <p>height: <span className="text-teal">{state.height}</span></p>
                     </div>
                 </div>
             </div>
