@@ -100,7 +100,7 @@ const Item = ({ url }) => {
           weight: pokemon.weight,
           height: pokemon.height,
           types: pokemon.types,
-          img: sprites
+          sprite: sprites
         }}
       >
         <div className="w-[266px] h-[235px] flex flex-col justify-between">

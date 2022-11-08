@@ -22,7 +22,7 @@ const Pokemon = ({ location }) => {
                         rounded-xl bg-card drop-shadow-md list-none flex
                         flex-col items-center justify-between py-4"
                 >
-                    <img src={state.img} alt={state.name}/>
+                    <img src={state.sprite} alt={state.name}/>
                     <div>
                         <p>name: <span className="text-teal">{state.name}</span></p>
                         <p>abilities: 
