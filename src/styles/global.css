@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    background: black;
+}
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('../fonts/Outfit-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Outfit-Light';
+    src: url('../fonts/Outfit-Light.ttf');
+}
